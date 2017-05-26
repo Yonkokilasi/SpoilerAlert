@@ -7,22 +7,22 @@ import android.widget.ArrayAdapter;
  * Created by Kenneth on 26/05/2017.
  */
 
-public class CategoriesArrayAdapter extends ArrayAdapter {
+public class CustomArrayAdapter extends ArrayAdapter {
     private Context mContext;
-    private String[] mCategories;
+    private String[] mArrayElements;
 
-    public CategoriesArrayAdapter(Context mContext,int resource,String[] mCategories){
+    public CustomArrayAdapter(Context mContext,int resource,String[] mArrayElements){
         super(mContext,resource);
         this.mContext = mContext;
-        this.mCategories = mCategories;
+        this.mArrayElements = mArrayElements;
     }
     @Override
     public Object getItem(int position){
-        String category = mCategories[position];
+        String category = mArrayElements[position];
         return String.format("#%s",category);
     }
     @Override
     public int getCount(){
-        return mCategories.length;
+        return mArrayElements.length;
     }
 }

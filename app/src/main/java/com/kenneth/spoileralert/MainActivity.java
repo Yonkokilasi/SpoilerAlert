@@ -1,5 +1,6 @@
 package com.kenneth.spoileralert;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] categories = new String[] {"Sports","Celebrities","Politics","Tech","Music","Food","Fashion","Film","Business"};
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        CategoriesArrayAdapter adapter = new CategoriesArrayAdapter(this,android.R.layout.simple_list_item_1,categories);
+        CustomArrayAdapter adapter = new CustomArrayAdapter(this,android.R.layout.simple_list_item_1,categories);
         mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView,View view,int i,long l){
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String categoryname = ((TextView)view).getText().toString();
                 Toast.makeText(MainActivity.this,"Viewing "+categoryname,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,SelectedCategoryActivity.class);

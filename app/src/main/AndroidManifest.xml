@@ -19,9 +19,9 @@
         <activity android:name=".SelectedCategoryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kenneth.spoileralert.MainActivity"
-                ></meta-data>
+                android:value="com.kenneth.spoileralert.MainActivity" />
         </activity>
+        <activity android:name=".SpoilerTweetsActivity"></activity>
     </application>
 
 </manifest>
