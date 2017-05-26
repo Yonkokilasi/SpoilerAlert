@@ -1,6 +1,7 @@
 package com.kenneth.spoileralert;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,12 +31,14 @@ public class SelectedCategoryActivity extends AppCompatActivity {
         CustomArrayAdapter adapter = new CustomArrayAdapter(this,android.R.layout.simple_list_item_1,trendingContent);
         mListView.setAdapter(adapter);
 
+        Typeface titleFont = Typeface.createFromAsset(getAssets(),"fonts/JOURNAL.TTF");
+
+        mTextView.setTypeface(titleFont);
         mTextView.setText(adapter.getCount()+" sub-categories of "+categoryname);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SelectedCategoryActivity.this,"Fake News",Toast.LENGTH_SHORT).show();
                 String content = ((TextView)view).getText().toString();
                 Intent intent = new Intent(SelectedCategoryActivity.this,SpoilerTweetsActivity.class);
                 intent.putExtra("content",content);

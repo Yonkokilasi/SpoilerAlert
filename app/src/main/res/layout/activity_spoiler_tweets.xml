@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kenneth.spoileralert.SpoilerTweetsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:background="@color/colorBackground"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Lorem Ipsum"
+        android:textAlignment="center"
+        android:id="@+id/tweetsHeaderTextView"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tweetsListView"
+        android:layout_below="@+id/tweetsHeaderTextView"/>
+
+</RelativeLayout>

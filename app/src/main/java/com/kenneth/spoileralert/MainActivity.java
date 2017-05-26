@@ -2,6 +2,7 @@ package com.kenneth.spoileralert;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.categoriesListView) ListView mListView;
+    @Bind(R.id.headerTextView) TextView mTextView;
 
     private String[] categories = new String[] {"Sports","Celebrities","Politics","Tech","Music","Food","Fashion","Film","Business"};
 
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        Typeface titleFont = Typeface.createFromAsset(getAssets(),"fonts/JOURNAL.TTF");
+        mTextView.setTypeface(titleFont);
 
         CustomArrayAdapter adapter = new CustomArrayAdapter(this,android.R.layout.simple_list_item_1,categories);
         mListView.setAdapter(adapter);

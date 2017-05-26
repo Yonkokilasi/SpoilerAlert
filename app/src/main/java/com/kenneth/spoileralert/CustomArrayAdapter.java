@@ -18,8 +18,8 @@ public class CustomArrayAdapter extends ArrayAdapter {
     }
     @Override
     public Object getItem(int position){
-        String category = mArrayElements[position];
-        return String.format("#%s",category);
+        String arrayElement = mArrayElements[position];
+        return String.format("#%s",arrayElement);
     }
     @Override
     public int getCount(){
