@@ -11,14 +11,17 @@
         android:layout_height="wrap_content"
         android:text="Browse categories"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:id="@+id/headerTextView"/>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/headerTextView"
-        android:id="@+id/categoriesListView"
-        />
+        android:id="@+id/categoriesListView"/>
 
 </RelativeLayout>
