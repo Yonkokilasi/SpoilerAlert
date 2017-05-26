@@ -1,5 +1,6 @@
 package com.kenneth.spoileralert;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView,View view,int i,long l){
                 String categoryname = ((TextView)view).getText().toString();
                 Toast.makeText(MainActivity.this,"Viewing "+categoryname,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,SelectedCategoryActivity.class);
+                intent.putExtra("categoryname",categoryname);
+                startActivity(intent);
             }
         });
     }
