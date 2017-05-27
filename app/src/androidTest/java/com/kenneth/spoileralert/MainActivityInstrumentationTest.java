@@ -25,7 +25,7 @@ public class MainActivityInstrumentationTest {
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void listItemlicksDisplaysCorrectToastOfTheTopic(){
+    public void listItemClickDisplaysCorrectToastOfTheTopic(){
         View activityDecorView = activityTestRule.getActivity().getWindow().getDecorView();
         String hashTagTopic = "Viewing #Sports";
         onData(anything())
@@ -37,4 +37,13 @@ public class MainActivityInstrumentationTest {
     }
 
     @Test
+    public void listItemClickStartsNewActivity(){
+        View activtyDecorView = activityTestRule.getActivity().getWindow().getDecorView();
+        String clickedCategory = "#Sports";
+        onData(anything())
+                .inAdapterView(withId(R.id.categoriesListView))
+                .atPosition(0)
+                .perform(click());
+        onView(withId(R.id.categoryTextView)).check(matches(withText("10 sub-categories of "+clickedCategory)));
+    }
 }
