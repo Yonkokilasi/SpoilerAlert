@@ -38,7 +38,7 @@ public class MainActivityInstrumentationTest {
 
     @Test
     public void listItemClickStartsNewActivity(){
-        View activtyDecorView = activityTestRule.getActivity().getWindow().getDecorView();
+        View activityDecorView = activityTestRule.getActivity().getWindow().getDecorView();
         String clickedCategory = "#Sports";
         onData(anything())
                 .inAdapterView(withId(R.id.categoriesListView))
