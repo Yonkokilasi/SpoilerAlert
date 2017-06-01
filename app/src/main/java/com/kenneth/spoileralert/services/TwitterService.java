@@ -63,10 +63,14 @@ public class TwitterService {
                     }else {
                         hashTags.add("No HashTags!");
                     }
-                    String externalLink = tweetObject.getJSONObject("entities").getJSONArray("urls").getJSONObject(0).getString("url");
-                    String imageLink = tweetObject.getJSONObject("entities").getJSONArray("media").getJSONObject(0).getString("media_url");
-
-                    Tweet tweet = new Tweet(tweetText,hashTags,externalLink,imageLink);
+                    String externalLink;
+                    if (tweetObject.getJSONObject("entities").getJSONArray("urls").length()>0){
+                        externalLink = tweetObject.getJSONObject("entities").getJSONArray("urls").getJSONObject(0).getString("url");
+                    }else {
+                        externalLink = "No external links";
+                    }
+                    String user = tweetObject.getJSONObject("user").getString("name");
+                    Tweet tweet = new Tweet(tweetText,hashTags,externalLink,user);
                     tweets.add(tweet);
                 }
             }

@@ -10,13 +10,13 @@ public class Tweet {
     private String mTweetText;
     private ArrayList<String> mHashTags;
     private String mExternalLink;
-    private String mImageLink;
+    private String mUser;
 
-    public Tweet(String tweetText, ArrayList<String> hashTags,String externalLink,String imageLink){
+    public Tweet(String tweetText, ArrayList<String> hashTags,String externalLink,String user){
         this.mTweetText = tweetText;
         this.mHashTags = hashTags;
         this.mExternalLink = externalLink;
-        this.mImageLink = imageLink;
+        this.mUser = user;
     }
 
     public String getTweetText(){
@@ -31,7 +31,7 @@ public class Tweet {
         return mExternalLink;
     }
 
-    public String getImageLink(){
-        return mImageLink;
+    public String getUser(){
+        return mUser;
     }
 }
