@@ -3,6 +3,11 @@ package com.kenneth.spoileralert.services;
 import com.kenneth.spoileralert.Constants;
 import com.kenneth.spoileralert.models.Tweet;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -41,5 +46,35 @@ public class TwitterService {
 
     public ArrayList<Tweet> processResults(Response response){
         ArrayList<Tweet> tweets = new ArrayList<>();
+        try {
+            String jsonData = response.body().string();
+            if (response.isSuccessful()){
+                JSONObject twitterJSON = new JSONObject(jsonData);
+                JSONArray statusesJSON = twitterJSON.getJSONArray("statuses");
+                for (int i = 0; i <statusesJSON.length() ; i++) {
+                    JSONObject tweetObject = statusesJSON.getJSONObject(i);
+                    String tweetText = tweetObject.getString("text");
+                    ArrayList<String> hashTags = new ArrayList<>();
+                    JSONArray hashTagsArray = tweetObject.getJSONObject("entities").getJSONArray("hashtags");
+                    if (hashTagsArray.length()>0){
+                        for (int j = 0; j <hashTagsArray.length() ; j++) {
+                            hashTags.add(hashTagsArray.getString(j));
+                        }
+                    }else {
+                        hashTags.add("No HashTags!");
+                    }
+                    String externalLink = tweetObject.getJSONObject("entities").getJSONArray("urls").getJSONObject(0).getString("url");
+                    String imageLink = tweetObject.getJSONObject("entities").getJSONArray("media").getJSONObject(0).getString("media_url");
+
+                    Tweet tweet = new Tweet(tweetText,hashTags,externalLink,imageLink);
+                    tweets.add(tweet);
+                }
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return tweets;
     }
 }
