@@ -3,6 +3,8 @@ package com.kenneth.spoileralert;
 import android.os.Build;
 import android.widget.ListView;
 
+import com.kenneth.spoileralert.ui.SpoilerTweetsActivity;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

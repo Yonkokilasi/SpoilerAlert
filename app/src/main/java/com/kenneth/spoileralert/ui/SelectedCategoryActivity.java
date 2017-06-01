@@ -1,4 +1,4 @@
-package com.kenneth.spoileralert;
+package com.kenneth.spoileralert.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.kenneth.spoileralert.CustomArrayAdapter;
+import com.kenneth.spoileralert.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -2,7 +2,8 @@ package com.kenneth.spoileralert;
 
 import android.os.Build;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.kenneth.spoileralert.ui.SelectedCategoryActivity;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -3,6 +3,8 @@ package com.kenneth.spoileralert;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
+import com.kenneth.spoileralert.ui.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 

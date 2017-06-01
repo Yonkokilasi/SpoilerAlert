@@ -4,6 +4,8 @@ import android.os.Build;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.kenneth.spoileralert.ui.MainActivity;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
