@@ -4,16 +4,20 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kenneth.spoileralert.adapters.CustomArrayAdapter;
 import com.kenneth.spoileralert.R;
+import com.kenneth.spoileralert.models.Tweet;
 import com.kenneth.spoileralert.services.TwitterService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,6 +28,9 @@ import okhttp3.Response;
 public class SelectedCategoryActivity extends AppCompatActivity {
     @Bind(R.id.categoryTextView) TextView mTextView;
     @Bind(R.id.contentListView) ListView mListView;
+    public static final String TAG = SelectedCategoryActivity.class.getSimpleName();
+
+    public ArrayList<Tweet> mTweets = new ArrayList<>();
 
 
     @Override
@@ -39,7 +46,7 @@ public class SelectedCategoryActivity extends AppCompatActivity {
         Typeface titleFont = Typeface.createFromAsset(getAssets(),"fonts/JOURNAL.TTF");
 
         mTextView.setTypeface(titleFont);
-//        mTextView.setText(adapter.getCount()+" sub-categories of "+categoryname);
+        mTextView.setText(" sub-categories of "+categoryname);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -62,12 +69,25 @@ public class SelectedCategoryActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
                     String jsonData = response.body().string();
+                        Log.v(TAG,jsonData);
+                        mTweets = twitterService.processResults(response);
 
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
+                        SelectedCategoryActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String [] trendingTweets = new String[mTweets.size()];
+                                for (int i = 0; i <trendingTweets.length ; i++) {
+                                    trendingTweets[i] = mTweets.get(i).getTweetText();
+                                }
+                                ArrayAdapter adapter = new ArrayAdapter(SelectedCategoryActivity.this,android.R.layout.simple_list_item_2,trendingTweets);
+                                mListView.setAdapter(adapter);
+                                for (Tweet tweet:mTweets){
+                                    Log.d(TAG,"Tweet: "+tweet.getTweetText());
+                                    Log.e(TAG,"Inside the run");
+                                }
+                            }
+                        });
             }
         });
     }
