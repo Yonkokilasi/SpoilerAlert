@@ -1,4 +1,4 @@
-package com.kenneth.spoileralert;
+package com.kenneth.spoileralert.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
@@ -19,7 +19,7 @@ public class CustomArrayAdapter extends ArrayAdapter {
     @Override
     public Object getItem(int position){
         String arrayElement = mArrayElements[position];
-        return String.format("#%s",arrayElement);
+        return arrayElement;
     }
     @Override
     public int getCount(){

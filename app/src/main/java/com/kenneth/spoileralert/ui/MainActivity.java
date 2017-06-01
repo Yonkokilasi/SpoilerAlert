@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kenneth.spoileralert.CustomArrayAdapter;
+import com.kenneth.spoileralert.adapters.CustomArrayAdapter;
 import com.kenneth.spoileralert.R;
 
 import butterknife.Bind;
