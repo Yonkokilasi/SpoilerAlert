@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,7 +28,7 @@ import okhttp3.Response;
 
 public class SelectedCategoryActivity extends AppCompatActivity {
     @Bind(R.id.categoryTextView) TextView mTextView;
-    @Bind(R.id.contentListView) ListView mListView;
+    @Bind(R.id.tweetsRecyclerView) RecyclerView mListView;
     public static final String TAG = SelectedCategoryActivity.class.getSimpleName();
 
     public ArrayList<Tweet> mTweets = new ArrayList<>();
