@@ -30,9 +30,9 @@ public class SpoilerTweetsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String content = intent.getStringExtra("content");
-        CustomArrayAdapter adapter = new CustomArrayAdapter(this,android.R.layout.simple_list_item_1,fakeNews);
-        mListView.setAdapter(adapter);
-        mTextView.setTypeface(titleFont);
-        mTextView.setText(content+": "+adapter.getCount()+" contributions");
+//        CustomArrayAdapter adapter = new CustomArrayAdapter(this,android.R.layout.simple_list_item_1,fakeNews);
+//        mListView.setAdapter(adapter);
+//        mTextView.setTypeface(titleFont);
+//        mTextView.setText(content+": "+adapter.getCount()+" contributions");
     }
 }

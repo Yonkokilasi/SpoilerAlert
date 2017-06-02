@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
         Typeface titleFont = Typeface.createFromAsset(getAssets(),"fonts/JOURNAL.TTF");
         mTextView.setTypeface(titleFont);
 
-        CustomArrayAdapter adapter = new CustomArrayAdapter(this,android.R.layout.simple_list_item_1,categories);
-        mListView.setAdapter(adapter);
+        mListView.setAdapter(new CustomArrayAdapter(this,categories));
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String categoryname = ((TextView)view).getText().toString();
+                TextView textView = (TextView)view.findViewById(R.id.tweetsCategoryTextView);
+                String categoryname = textView.getText().toString();
                 Toast.makeText(MainActivity.this,"Viewing "+categoryname,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,SelectedCategoryActivity.class);
                 intent.putExtra("categoryname",categoryname);
