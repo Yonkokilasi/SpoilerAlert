@@ -45,7 +45,8 @@ public class TweetsListAdapter extends RecyclerView.Adapter<TweetsListAdapter.Tw
     }
 
     public class TweetViewHolder extends RecyclerView.ViewHolder{
-        @Bind(R.id.tweetTextView) TextView mTextView;
+        @Bind(R.id.tweetTextView) TextView mTweetTextView;
+        @Bind(R.id.tweetUserTextView) TextView mUserTextView;
         private Context mContext;
 
         public TweetViewHolder(View itemView){
@@ -54,7 +55,8 @@ public class TweetsListAdapter extends RecyclerView.Adapter<TweetsListAdapter.Tw
             mContext=itemView.getContext();
         }
         public void bindTweet(Tweet tweet){
-            mTextView.setText(tweet.getTweetText());
+            mUserTextView.setText("@"+tweet.getUser()+"\n says");
+            mTweetTextView.setText(tweet.getTweetText());
         }
     }
 }

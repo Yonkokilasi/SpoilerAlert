@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.categoriesListView) ListView mListView;
     @Bind(R.id.headerTextView) TextView mTextView;
 
-    private String[] categories = new String[] {"Sports","Celebrities","Politics","Tech","Music","Food","Fashion","Film","Business"};
+    private String[] categories = new String[] {"Sports","Celebrities","Politics","Tech","Music","Food","Fashion","Film","Business","Gossip","Trump","Conference","News","Gaming"};
 
 
     @Override
