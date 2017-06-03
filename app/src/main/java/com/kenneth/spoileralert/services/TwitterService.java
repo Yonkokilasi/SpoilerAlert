@@ -58,7 +58,7 @@ public class TwitterService {
                     JSONArray hashTagsArray = tweetObject.getJSONObject("entities").getJSONArray("hashtags");
                     if (hashTagsArray.length()>0){
                         for (int j = 0; j <hashTagsArray.length() ; j++) {
-                            hashTags.add(hashTagsArray.getString(j));
+                            hashTags.add(hashTagsArray.getJSONObject(j).getString("text"));
                         }
                     }else {
                         hashTags.add("No HashTags!");
