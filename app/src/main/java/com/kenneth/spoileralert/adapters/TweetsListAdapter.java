@@ -1,6 +1,7 @@
 package com.kenneth.spoileralert.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 
 import com.kenneth.spoileralert.R;
 import com.kenneth.spoileralert.models.Tweet;
+import com.kenneth.spoileralert.ui.SpoilerTweetsActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -44,7 +48,7 @@ public class TweetsListAdapter extends RecyclerView.Adapter<TweetsListAdapter.Tw
         return mTweets.size();
     }
 
-    public class TweetViewHolder extends RecyclerView.ViewHolder{
+    public class TweetViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @Bind(R.id.tweetTextView) TextView mTweetTextView;
         @Bind(R.id.tweetUserTextView) TextView mUserTextView;
         private Context mContext;
@@ -53,10 +57,18 @@ public class TweetsListAdapter extends RecyclerView.Adapter<TweetsListAdapter.Tw
             super(itemView);
             ButterKnife.bind(this,itemView);
             mContext=itemView.getContext();
+            itemView.setOnClickListener(this);
         }
         public void bindTweet(Tweet tweet){
             mUserTextView.setText("@"+tweet.getUser()+"\n says");
             mTweetTextView.setText(tweet.getTweetText());
+        }
+
+        @Override
+        public void onClick(View v){
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, SpoilerTweetsActivity.class);
+            intent.putExtra("tweet", Parcels.wrap(mTweets.get(itemPosition)));
         }
     }
 }

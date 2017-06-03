@@ -6,15 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.kenneth.spoileralert.adapters.CustomArrayAdapter;
 import com.kenneth.spoileralert.R;
 import com.kenneth.spoileralert.adapters.TweetsListAdapter;
 import com.kenneth.spoileralert.models.Tweet;
@@ -51,17 +46,8 @@ public class SelectedCategoryActivity extends AppCompatActivity {
         Typeface titleFont = Typeface.createFromAsset(getAssets(),"fonts/JOURNAL.TTF");
 
         mTextView.setTypeface(titleFont);
-        mTextView.setText(" sub-categories of "+categoryname);
+        mTextView.setText("Tweets on "+categoryname);
 
-//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String content = ((TextView)view).getText().toString();
-//                Intent intent = new Intent(SelectedCategoryActivity.this,SpoilerTweetsActivity.class);
-//                intent.putExtra("content",content);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     private void getTweets(String topic){
