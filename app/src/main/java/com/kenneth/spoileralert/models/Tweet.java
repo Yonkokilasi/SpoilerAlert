@@ -1,16 +1,21 @@
 package com.kenneth.spoileralert.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
  * Created by Kenneth on 01/06/2017.
  */
 
+@Parcel
 public class Tweet {
-    private String mTweetText;
-    private ArrayList<String> mHashTags;
-    private String mExternalLink;
-    private String mUser;
+    String mTweetText;
+    ArrayList<String> mHashTags;
+    String mExternalLink;
+    String mUser;
+
+    public Tweet(){}
 
     public Tweet(String tweetText, ArrayList<String> hashTags,String externalLink,String user){
         this.mTweetText = tweetText;

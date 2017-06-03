@@ -68,7 +68,9 @@ public class TweetsListAdapter extends RecyclerView.Adapter<TweetsListAdapter.Tw
         public void onClick(View v){
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, SpoilerTweetsActivity.class);
-            intent.putExtra("tweet", Parcels.wrap(mTweets.get(itemPosition)));
+            Tweet clickedTweet = mTweets.get(itemPosition);
+            intent.putExtra("tweet", Parcels.wrap(clickedTweet));
+            mContext.startActivity(intent);
         }
     }
 }

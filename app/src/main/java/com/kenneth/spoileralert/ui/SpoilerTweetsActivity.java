@@ -9,14 +9,19 @@ import android.widget.TextView;
 
 import com.kenneth.spoileralert.adapters.CustomArrayAdapter;
 import com.kenneth.spoileralert.R;
+import com.kenneth.spoileralert.models.Tweet;
+
+import org.parceler.Parcels;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SpoilerTweetsActivity extends AppCompatActivity {
-    String[] fakeNews = new String[]{"Fake News","More Fake News","Most Fake News","I can't believe you're still reading","API integration coming soon","Keep calm and don't crash this app","This is a list BTW","Expect spolers soon"};
-    @Bind(R.id.tweetsHeaderTextView) TextView mTextView;
-    @Bind(R.id.tweetsListView) ListView mListView;
+    @Bind(R.id.tweeterTextView) TextView mTweeterTextView;
+    @Bind(R.id.extLinkTextView) TextView mLinkTextView;
+    @Bind(R.id.tweetContentTextView) TextView mTweetContextTextView;
+    @Bind(R.id.tweetsHashTagTextView) TextView mTweetHashTagTextView;
+    private Tweet mTweet;
 
 
     @Override
@@ -29,10 +34,11 @@ public class SpoilerTweetsActivity extends AppCompatActivity {
         Typeface titleFont = Typeface.createFromAsset(getAssets(),"fonts/JOURNAL.TTF");
 
         Intent intent = getIntent();
-        String content = intent.getStringExtra("content");
-//        CustomArrayAdapter adapter = new CustomArrayAdapter(this,android.R.layout.simple_list_item_1,fakeNews);
-//        mListView.setAdapter(adapter);
-//        mTextView.setTypeface(titleFont);
-//        mTextView.setText(content+": "+adapter.getCount()+" contributions");
+        mTweet = Parcels.unwrap(intent.getParcelableExtra("tweet"));
+        mTweeterTextView.setText(mTweet.getUser());
+        mTweetHashTagTextView.setText(android.text.TextUtils.join(",",mTweet.getHashTags()));
+        mTweetContextTextView.setText(mTweet.getTweetText());
+        mLinkTextView.setText(mTweet.getExternalLink());
+        mTweeterTextView.setTypeface(titleFont);
     }
 }

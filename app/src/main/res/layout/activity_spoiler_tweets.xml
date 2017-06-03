@@ -13,13 +13,37 @@
         android:background="@color/colorBackground"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="Lorem Ipsum"
+        android:text="Name here"
         android:textAlignment="center"
-        android:id="@+id/tweetsHeaderTextView"/>
-    <ListView
+        android:id="@+id/tweeterTextView"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Hash tags"
+        android:layout_below="@+id/tweeterTextView"
+        android:id="@+id/tweetsHashTagTextView"
+        android:textColor="@android:color/holo_blue_dark"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tweetsListView"
-        android:layout_below="@+id/tweetsHeaderTextView"/>
+        android:text="Actual tweet"
+        android:textSize="30sp"
+        android:layout_below="@+id/tweetsHashTagTextView"
+        android:textStyle="italic"
+        android:id="@+id/tweetContentTextView"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="20dp"
+        android:text="External link"
+        android:textSize="30sp"
+        android:id="@+id/extLinkTextView"/>
 
 </RelativeLayout>
