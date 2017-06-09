@@ -1,15 +1,43 @@
 package com.kenneth.spoileralert.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kenneth.spoileralert.R;
 
-public class LoginActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    @Bind(R.id.emailEditText) EditText mEmailEditText;
+    @Bind(R.id.passwordEditText) EditText mPasswordEditText;
+    @Bind(R.id.loginButton) Button mLoginButton;
+    @Bind(R.id.newUserTextView) TextView mNewUserTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
+
+        mLoginButton.setOnClickListener(this);
+        mNewUserTextView.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v){
+        if (v==mLoginButton){
+            Toast.makeText(this, "Login Coming Soon!", Toast.LENGTH_SHORT).show();
+        }
+        if (v==mNewUserTextView){
+            Intent intent = new Intent(LoginActivity.this,NewUserActivity.class);
+            startActivity(intent);
+        }
     }
 }
