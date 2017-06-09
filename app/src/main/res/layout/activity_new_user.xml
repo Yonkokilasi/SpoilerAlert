@@ -59,7 +59,7 @@
         android:id="@+id/newUserSubmitButton"
         android:layout_below="@+id/confirmPasswordEditText"
         android:layout_marginTop="20dp"
-        android:text="Create"
+        android:text="Sign Up"
         android:background="@color/colorAccent"
         android:textColor="@android:color/white"/>
 
