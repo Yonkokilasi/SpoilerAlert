@@ -1,5 +1,6 @@
 package com.kenneth.spoileralert.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
+    private ProgressDialog mLoginProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mLoginButton.setOnClickListener(this);
         mNewUserTextView.setOnClickListener(this);
+        showProgressDialog();
     }
 
     @Override
@@ -90,16 +94,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mPasswordEditText.setError("Password field is empty. Please fill it in");
         }
 
+        mLoginProgressDialog.show();
         mAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            mLoginProgressDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "Signed in!", Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(LoginActivity.this, "Sign in failed!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    private void showProgressDialog(){
+        mLoginProgressDialog = new ProgressDialog(this);
+        mLoginProgressDialog.setMessage("Logging you in...");
+        mLoginProgressDialog.setCancelable(false);
     }
 }
